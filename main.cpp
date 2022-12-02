@@ -1,7 +1,31 @@
 ﻿#include <iostream>
 using namespace std;
 
-double my_pow(double a, unsigned int n)
+double my_pow(double a, int n)
+{
+	double ch = a;
+
+	if (n < 0)
+		while ((n - 1) != 0)
+		{
+			a /= ch;
+			n++;
+		}
+	else
+		if (n > 0)
+			while ((n - 1) != 0)
+			{
+				a *= ch;
+				n--;
+			}
+		else a = 1;
+
+
+
+	return a;
+} 
+
+double my_pow1(double a, unsigned int n)
 {
 	double ch = a;
 
@@ -67,17 +91,24 @@ int main()
 	setlocale(LC_ALL, "Russian");
 
 	int a;
-	unsigned int n;
+	int n;
 	cout << "Ввод числа: \n";
 
 	while (cin >> a)
 	{
 		cout << "Ввод степени: \n";
 		cin >> n;
+		if (n < 0)
+		{
 		cout << endl << my_pow(a, n) << endl;
+		}
+		else 
+		{
+		cout << endl << my_pow1(a, n) << endl;
 		cout << endl << BinaryPower(a, n) << endl;
 		cout << endl << FastPowerDividing(a, n) << endl;
 		cout << endl << FastPowerFractional(a, n) << endl;
+		}
 		cout << "Ввод числа: \n";
 	}
 	return 0;
